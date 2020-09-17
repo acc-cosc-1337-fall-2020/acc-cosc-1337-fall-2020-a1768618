@@ -17,6 +17,19 @@ int sum_of_squares(int num)
     return sum;
 }
 
+int sum_of_squares_2(int num)
+{
+    int sum = 0,    cnt = 0;
+
+    while(cnt <= num)
+    {
+        sum += cnt * cnt;
+        cnt++;
+    }
+
+    return sum;
+}
+
 //Using a while loop write code for display function that accepts a string and displays 
 //each character of the string in a line
 //Example: display("Hello")

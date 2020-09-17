@@ -13,3 +13,10 @@ TEST_CASE("Varify sum of squares function")
 	REQUIRE(sum_of_squares(5) == 55);
 }
 
+TEST_CASE("Varify sum of squares function 2")
+{
+	REQUIRE(sum_of_squares_2(3) == 14);
+	REQUIRE(sum_of_squares_2(4) == 30);
+	REQUIRE(sum_of_squares_2(5) == 55);
+}
+
