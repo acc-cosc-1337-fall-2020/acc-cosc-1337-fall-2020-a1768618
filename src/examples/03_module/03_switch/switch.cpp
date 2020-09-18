@@ -38,4 +38,27 @@ std::string menu(int option)
 
 }
     
+std::string menu(char option)
+{
+    std::string return_val;
 
+    switch(option)
+    {
+    case 'a':
+        return_val = "A";
+        break;
+
+    case 'b':
+        return_val = "B";
+        break;
+
+    case 'c':
+        return_val = "C";
+        break;                 
+    
+    default:
+        return_val = "Invalid option";
+        
+    }
+    return return_val;
+}
