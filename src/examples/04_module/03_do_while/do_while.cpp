@@ -1,28 +1,24 @@
 #include "do_while.h"
 #include<iostream>
 
-using std::cout; using std::cin;
+using std::cout; using std::cin;    
 
 //Write code for void function prompt_user to loop until
 //user opts not to continue.  
 
 void promt_user()
 {
-    char choice;
+    int menu_choice;
 
 	do
 	{
         display_menu();
         cout<<"Select a number\n\n";
-        int menu_choice;
-    	cin>>menu_choice;
+        cin>>menu_choice;
 
         execute_menu_choice(menu_choice);
 
-		cout<<"\nEnter y to continue: ";
-        cin>>choice;
-	
-	} while (choice == 'y' || choice == 'Y');
+	} while (menu_choice != 4);
 
 }
 
@@ -40,19 +36,19 @@ void execute_menu_choice(int num)
     switch(num)
     {
         case 1:
-            cout<<"You selected AR menu";
+            cout<<"You selected AR menu\n";
             break;
         case 2:
-            cout<<"You selected AP menu";
+            cout<<"You selected AP menu\n";
             break;
         case 3:
-            cout<<"You selected Payroll menu";
+            cout<<"You selected Payroll menu\n";
             break;
         case 4:
             cout<<"Will you exit? (y/n): \n";
             break;
         default:
-            cout<<"Invalid Menu choice";
+            cout<<"Invalid Menu choice\n";
             break;
     }
 }
