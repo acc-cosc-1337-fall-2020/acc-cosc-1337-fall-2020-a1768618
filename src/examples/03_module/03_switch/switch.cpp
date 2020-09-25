@@ -10,7 +10,7 @@
 //returns 'Option 4' when value 4
 //return 'Invalid Option' otherwise
 
-std::string menu(int option)
+string menu(int option)
 {
     std::string return_val;
 
@@ -38,7 +38,7 @@ std::string menu(int option)
 
 }
     
-std::string menu(char option)
+string menu(char option)
 {
     std::string return_val;
 

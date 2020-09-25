@@ -1,10 +1,12 @@
 //write string include
 #include<string>
 
-//Write prototype for function that accepts a num and returns a string
-std::string menu(int option);
+using std::string;
 
-std::string menu(char option);
+//Write prototype for function that accepts a num and returns a string
+string menu(int option);
+
+string menu(char option);
 
 
 
