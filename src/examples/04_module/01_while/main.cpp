@@ -6,18 +6,20 @@ using std::cout;	using std::cin;
 
 int main() 
 {
-	int number;
 	char choice = 'y';
 
-	while(choice == 'y')
+	while(choice == 'y' || choice == 'Y')
 	{
-		cout<<"Enter number: ";
-		cin>>number;
+		int num = 5;
+		cout<<"Main num before function call: "<<num<<"\n";
+		//cout<<"Enter a number: ";
+		//cin>>num;
 
-		int sum = sum_of_squares(number);
-		cout<<"Sum is "<<sum<<"\n";
+		int sum = sum_of_squares(num);
+		cout<<"Main num after function call: "<<num<<"\n";
+		cout<<"Result is: "<<sum<<"\n";
 
-		cout<<"Enter y to continue: ";
+		cout<<"Enter y to continue, any other char to exit.";
 		cin>>choice;
 	}
 

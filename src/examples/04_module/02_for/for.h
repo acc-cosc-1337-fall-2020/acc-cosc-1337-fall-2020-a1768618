@@ -2,4 +2,6 @@
 //that accepts an int and returns void
 void display_numbers(int num);
 
-int sum_numbers(int num);
+int sum_of_number(int num);
+
+int sum_of_number_2(int num);

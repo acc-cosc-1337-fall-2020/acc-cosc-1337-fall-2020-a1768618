@@ -1,8 +1,9 @@
 #include "do_while.h"
+#include<iostream>
 
 int main() 
 {	
-	promt_user();
+	prompt_user();
 
 	return 0;
 }

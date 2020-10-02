@@ -5,50 +5,48 @@ using std::cout; using std::cin;
 
 //Write code for void function prompt_user to loop until
 //user opts not to continue.  
-
-void promt_user()
+void prompt_user()
 {
-    int menu_choice;
+    int choice;
 
 	do
 	{
         display_menu();
-        cout<<"Select a number\n\n";
-        cin>>menu_choice;
 
-        execute_menu_choice(menu_choice);
+		cin>>choice;
 
-	} while (menu_choice != 4);
+        execute_menu(choice);
+		
+	}while(choice != 4);
 
 }
 
 void display_menu()
 {
-    cout<<"1-Accounts Recievable\n";
-    cout<<"2-Accounts Payable\n";
-    cout<<"3-Payroll\n";
-    cout<<"4-Exit\n\n";
-    cout<<"Select a number";
+    cout<<"1-Option 1\n";
+	cout<<"2-Option 2 \n";
+	cout<<"3-Option 3 \n";
+    cout<<"4-Exit\n";
+	cout<<"Enter a menu number: ";    
 }
 
-void execute_menu_choice(int num)
+void execute_menu(int option)
 {
-    switch(num)
+    switch(option)
     {
-        case 1:
-            cout<<"You selected AR menu\n";
-            break;
-        case 2:
-            cout<<"You selected AP menu\n";
-            break;
-        case 3:
-            cout<<"You selected Payroll menu\n";
-            break;
-        case 4:
-            cout<<"Will you exit? (y/n): \n";
-            break;
-        default:
-            cout<<"Invalid Menu choice\n";
-            break;
+    case 1:
+        cout<<"You chose option 1\n";
+        break;
+    case 2:
+        cout<<"You chose option 2\n";
+        break;
+    case 3:
+        cout<<"You chose option 3\n";
+        break;
+    case 4:
+        cout<<"You chose to exit\n";
+        break;
+    default:
+        cout<<"Invalid option\n";
     }
 }

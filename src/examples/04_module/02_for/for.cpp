@@ -18,17 +18,35 @@ void display_numbers(int num)
 {
     for(int i=0; i < num; ++i)
     {
-        std::cout<<"i is: "<<i<<" i + 1 is: "<<i + 1<<"\n";
+        std::cout<<"i= "<<i<<" i + 1 = "<<i+1<<"\n";
     }
 }
 
-int sum_numbers(int num)
+/*
+1+1+2+2+3+3+4+4+5+5=30
+*/
+int sum_of_number(int num)
 {
     int sum = 0;
 
-    for(int i=0; i<= num; ++i)
+    for(int i = 0; i <= num ; i++)
     {
-        sum += i + i;
+        sum += i*2;      
+    }
+
+    return sum;
+}
+
+/*
+5+5+4+4+3+3+2+2+1+1=30
+*/
+int sum_of_number_2(int num)
+{
+    int sum = 0;
+
+    for(int i=num ; i > 0; i--)
+    {
+        sum += i*2;
     }
 
     return sum;
