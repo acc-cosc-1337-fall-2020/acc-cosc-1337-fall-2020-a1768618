@@ -34,22 +34,26 @@ TEST_CASE("Test get generations function")
 	REQUIRE(get_generation(1600) == "Invalid Year");
 }
 
-TEST_CASE("Test switch menu fuction")
+TEST_CASE("Test menu with switch fuction")
 {
-	/*REQUIRE(menu(0) == "Invalid Option");
+	REQUIRE(menu(0) == "Invalid Option");
 	REQUIRE(menu(1) == "Option 1");
 	REQUIRE(menu(2) == "Option 2");
 	REQUIRE(menu(3) == "Option 3");
 	REQUIRE(menu(4) == "Option 4");
 	REQUIRE(menu(10) == "Invalid Option");
-	*/
+	
+}
 
+TEST_CASE("Test menu with switch fuction character")
+{
 	REQUIRE(menu('z') == "Invalid Option");
 	REQUIRE(menu('a') == "A");
 	REQUIRE(menu('b') == "B");
 	REQUIRE(menu('c') == "C");
 	REQUIRE(menu('y') == "Invalid Option");
 	
-
 }
+
+
 

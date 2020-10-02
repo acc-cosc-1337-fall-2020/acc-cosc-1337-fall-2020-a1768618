@@ -57,7 +57,7 @@ string menu(char option)
         break;                 
     
     default:
-        return_val = "Invalid option";
+        return_val = "Invalid Option";
         
     }
     return return_val;

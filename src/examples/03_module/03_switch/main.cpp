@@ -4,8 +4,10 @@
 using std::cout;	using std::cin;
 int main() 
 {
-	int option, y =0, z=0;
+	int option, y=0, z=0;
 	int choice;
+	cout<<"Enter 0 for switch with number: ";
+	cin>>choice;
 
 	if(choice == 0)
 	{
@@ -21,8 +23,13 @@ int main()
 
 		cout << "\n" << y << " "<<z;
 		}
-	else // look at video for rest.
+	else 
 	{
+		char letter;
+		cout<<"Enter a letter: ";
+		cin>>letter;
+
+		cout<<menu(letter);
 
 	}
 
