@@ -1,32 +1,32 @@
 #include "vec.h"
 #include <vector>
+#include <string>
 #include <iostream>
 
 using std::vector;
 using std::cout;
+using std::string;
 
 int main() 
 {
-	vector<int> nums;
+	vector<string> nums {"joe", "marry", "bob"};
+	cout<<"Capacity: "<<nums.capacity()<<"\n";
 
-	cout<<"Size of nums: "<<nums.size()<<"\n";
-	cout<<"Capacity of nums: "<<nums.capacity()<<"\n";
-	cout<<"Max size of nums: "<<nums.max_size()<<"\n";
+	nums.push_back("john");
+	cout<<"Capacity: "<<nums.capacity()<<"\n";
+	
+	cout<<nums[3]<<"\n\n";
 
-	nums.push_back(15);
-	cout<<"Capacity of nums: "<<nums.capacity()<<"\n";
+	for(std::size_t i=0; i < nums.size(); ++i)
+	{
+		cout<<nums[i]<<"\n";
+	}
 
-	vector<int> nums2(10,5);
-
-	for(auto n: nums2)
+	cout<<"\n For ranged vector \n";
+	for(auto n: nums)
 	{
 		cout<<n<<"\n";
 	}
-
-	cout<<nums[0]<<"\n";
-	nums[0] = 20;
-	cout<<nums[0]<<"\n";
-
 
 	return 0;
 }

@@ -6,45 +6,36 @@ using std::string;	using std::cout;
 
 int main() 
 {
-	char letter = 'a';
-	string name = "john";
-	string empty_string();
-	string name1("copy constructor ");
-	string name2(name1,3,5);
-	string name3("Another name", 10);
-	string repeating(10, 'x');
+	string name = "john doe";
+	string name1("");
+	string name2(name, 2, 4); //print out 4 spaces starting from index 2
+	string name3("constructor copy"); // creates a copy of the string
+	string name4("i am too long for the buffer", 8); //allocates 8 spaces for the keyboard buffer
+	string name5(10, 'x'); // creates a list of 10 'x's
 
 	cout<<name<<"\n";
-	cout<<empty_string<<"\n";
 	cout<<name1<<"\n";
 	cout<<name2<<"\n";
 	cout<<name3<<"\n";
-	cout<<repeating<<"\n";
+	cout<<name4<<"\n";
+	cout<<name5<<"\n\n";
 
-	cout<<"size of name is: "<<name.size()<<"\n";
-	cout<<"max size variable name can hold: "<<name.max_size()<<"\n";
-
-	cout<<"Capacity of name: "<<name.capacity()<<"\n";
-	name.append(" doe");
-	cout<<"Capacity of name: "<<name.capacity()<<"\n";
-	cout<<name<<"\n";
-	cout<<name[0]<<"\n";
-	cout<<name[3]<<"\n\n";
-
-	std::size_t cnt = 0;
-	while(cnt < name.size())
+	cout<<name[2]<<"\n";
+	name[0] = 'J';
+	name[5] = 'D';
+	cout<<name<<"\n\n";
+	
+	//Important way to itterate through a string
+	for(std::size_t i = 0; i < name.size(); ++i)
 	{
-		cout <<name[cnt]<<"\n";
-		cnt++;
+		cout<<name[i]<<"\n";
 	}
 
-	for(auto c: name)
+	cout<<"\n for ranged \n";
+	for(char c: name)
 	{
-		cout <<c<<"\n";
+		cout<<c<<"\n";
 	}
-
-
-
 
 	return 0;
 }
