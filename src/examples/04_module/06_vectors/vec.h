@@ -1,10 +1,28 @@
 #include<string>
 #include<vector>
 
+using std::vector;
+using std::string;
+
 void loop_string_w_index(std::string str);
+
 void loop_string_w_index_ref(std::string& str);
+
 void loop_string_for_ranged(std::string str);
+
 void loop_string_for_ranged_ref(std::string& str);
+
+void loop_string_for_ranged_ref_fr_ref(std::string& str);
+
+void loop_vector_w_index(std::vector<int> nums);
+
+void loop_vector_w_index_ref(std::vector<int>& nums);
+
+void loop_vector_for_ranged(std::vector<int> nums);
+
+void loop_vector_for_ranged_ref(std::vector<int>& nums);
+
+void loop_vector_for_ranged_ref_fr_ref(std::vector<int>& nums);
 
 /*
 Write function prototype for void function loop_vector_w_index with no parameters.
