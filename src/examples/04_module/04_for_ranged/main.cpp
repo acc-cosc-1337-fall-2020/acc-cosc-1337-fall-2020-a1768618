@@ -6,36 +6,43 @@ using std::string;	using std::cout;
 
 int main() 
 {
-	string name = "john doe";
-	string name1("");
-	string name2(name, 2, 4); //print out 4 spaces starting from index 2
-	string name3("constructor copy"); // creates a copy of the string
-	string name4("i am too long for the buffer", 8); //allocates 8 spaces for the keyboard buffer
-	string name5(10, 'x'); // creates a list of 10 'x's
+	string name = "john2";
+	string empty_string();
+	string name1("copy constructor");
+	string name2(name1, 3, 5);
+	string name3("Another name", 10);
+	string repeating(10, 'x');
 
 	cout<<name<<"\n";
+	cout<<empty_string()<<"\n";
 	cout<<name1<<"\n";
 	cout<<name2<<"\n";
 	cout<<name3<<"\n";
-	cout<<name4<<"\n";
-	cout<<name5<<"\n\n";
+	cout<<repeating<<"\n\n";
 
-	cout<<name[2]<<"\n";
-	name[0] = 'J';
-	name[5] = 'D';
-	cout<<name<<"\n\n";
-	
-	//Important way to itterate through a string
-	for(std::size_t i = 0; i < name.size(); ++i)
+	cout<<"size of name is: "<<name.size()<<"\n";
+	cout<<"length of name is: "<<name.length()<<"\n";
+	cout<<"max size variable name can hold: "<<name.max_size()<<"\n";
+
+	cout<<"Capacity of name: "<<name.capacity()<<"\n";
+	name.append(" doe");
+	cout<<"Capacity of name: "<<name.capacity()<<"\n";
+	cout<<name<<"\n";
+	cout<<name[0]<<"\n";
+	cout<<name[3]<<"\n\n";
+
+	std::size_t cnt = 0;
+	while(cnt < name.size())
 	{
-		cout<<name[i]<<"\n";
+		cout<<name[cnt]<<"\n";
+		cnt++;
 	}
+	
+	cout<<"\n\n";
 
-	cout<<"\n for ranged \n";
-	for(char c: name)
+	for(auto c: name)
 	{
 		cout<<c<<"\n";
 	}
-
 	return 0;
 }

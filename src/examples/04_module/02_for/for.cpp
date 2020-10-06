@@ -47,6 +47,7 @@ int sum_of_number_2(int num)
     for(int i=num ; i > 0; i--)
     {
         sum += i*2;
+        // sum = sum + i*2;
     }
 
     return sum;
