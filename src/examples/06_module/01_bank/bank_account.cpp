@@ -4,7 +4,8 @@
 
 BankAccount::BankAccount(int b) : balance(b)
 {
-    //code for validating data    
+    //code for validating data  
+    bank_balance += balance;  
 }
 
 void BankAccount::deposit(int amount)
@@ -12,6 +13,7 @@ void BankAccount::deposit(int amount)
     if(amount > 0)
     {
         balance += amount;
+        bank_balance += amount;
     }
 }
 
@@ -20,9 +22,14 @@ void BankAccount::withdraw(int amount)
     if(amount > 0 && balance >= amount)
     {
         balance -= amount;
+        bank_balance -= amount;
     }
 }
 
+// Refers to the static varible in bank account.h
+int BankAccount::bank_balance = 0;
+
+// FREE FUNCTIONS DO NOT BELONG TO THE BANK ACCOUNT CLASS   
 void display_bank_account_data(BankAccount& b)
 {
     b.deposit(50);

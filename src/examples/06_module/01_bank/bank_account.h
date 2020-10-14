@@ -1,4 +1,7 @@
 //bank_account.h
+#ifndef BANK_ACCOUNT_H // header guard
+#define BANK_ACCOUNT_H // header guard
+
 class BankAccount
 {
 public:
@@ -8,10 +11,13 @@ public:
     void deposit(int amount);
     void withdraw(int amount);
 
+    static int get_bank_balance(){return bank_balance;}
 private://access specifier
     int balance;//class member
+    static int bank_balance;
 };//VERY IMPORTANT DON'T FORGET THE SEMICOLON!!!!!!!
 
+#endif // header guards
 
 //THESE FUNCTIONS DON'T BELONG TO THE BANKACCOUNT CLASS
 void display_bank_account_data(BankAccount& b);//free function
