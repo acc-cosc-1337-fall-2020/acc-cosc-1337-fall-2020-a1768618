@@ -1,6 +1,9 @@
 //bank_account.h
 #ifndef BRANCH_BANK_H
 #define BRANCH_BANK_H
+#include<iostream>
+using std::ostream;
+using std::istream;
 
 class BranchBank
 {
@@ -31,7 +34,9 @@ public:
     friend void display_balance(const BankAccount& a);//NOT A CLASS FUNCTION-it is a free function
     friend void BranchBank::update_balance(int b);
     static int get_bank_balance(){return bank_balance;}  // Persists thoughout the lifetime of program
-
+    friend std::ostream& operator<<(std::ostream& out, const BankAccount& a);
+    friend std::istream& operator>>(std::istream& in, BankAccount& a);
+    friend BankAccount operator+(const BankAccount& a1, const BankAccount& a2);
 private: //access specifier
     int balance{0}; //class member
     static int bank_balance;  // Persists thoughout the lifetime of program
