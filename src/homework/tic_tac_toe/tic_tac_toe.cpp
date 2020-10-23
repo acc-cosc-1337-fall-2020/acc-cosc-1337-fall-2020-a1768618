@@ -59,10 +59,8 @@ bool TicTacToe::check_board_full()
 // Seventh you clear the board
 void TicTacToe::clear_board() const
 {
-    for (size_t i = 0; i < pegs.size(); i++)
-    {
-        vector<string> pegs(9, string(" "));
-    }
+    vector<string> pegs(9, string(" "));
+
 }
 
 // Eigth you check if the game is over
