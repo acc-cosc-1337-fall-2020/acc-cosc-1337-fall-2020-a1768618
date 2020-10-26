@@ -16,7 +16,7 @@ private:
     // Private Member Functions
     void set_next_player();
     bool check_board_full();
-    void clear_board() const;
+    void clear_board() ;
 
 public:
     // Public Member Functions

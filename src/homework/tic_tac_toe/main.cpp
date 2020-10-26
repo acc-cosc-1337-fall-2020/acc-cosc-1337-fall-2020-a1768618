@@ -32,7 +32,7 @@ int main()
 		game.mark_board(position);
 		game.display_board();
 
-	} while (position <= 8);
+	} while (game.game_over() == false);
 	
 
 

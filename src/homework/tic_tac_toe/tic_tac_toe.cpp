@@ -57,9 +57,12 @@ bool TicTacToe::check_board_full()
 }
 
 // Seventh you clear the board
-void TicTacToe::clear_board() const
+void TicTacToe::clear_board() 
 {
-    vector<string> pegs(9, string(" "));
+    for(auto& peg: pegs)
+    {
+        peg = " ";
+    }
 
 }
 
