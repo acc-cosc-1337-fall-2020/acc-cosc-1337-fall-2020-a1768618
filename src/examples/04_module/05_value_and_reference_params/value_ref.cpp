@@ -47,3 +47,14 @@ void static_example()
 
     std::cout<<cnt<<"\n";
 }
+
+void use_smart_pointer(std::unique_ptr<int>&n)
+{
+    std::cout<<"smart pointer "<<*n<<"\n";
+}
+
+std::unique_ptr<int> get_smart_pointer()
+{
+    std::unique_ptr<int> num = std::make_unique<int>(500);
+    return num;
+}
