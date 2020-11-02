@@ -1,6 +1,8 @@
 #define CATCH_CONFIG_MAIN  // This tells Catch to provide a main() - only do this in one cpp file
 #include "catch.hpp"
 #include "bank_account.h"
+#include "checking_account.h"
+#include "savings_account.h"
 
 
 TEST_CASE("Verify Test Configuration", "verification") {
@@ -35,7 +37,6 @@ TEST_CASE("Test bank account deposit with negative amount")
 	REQUIRE(account.get_balance() == 500);
 
 }
-
 
 TEST_CASE("Test bank account withdraw")
 {
@@ -83,5 +84,40 @@ TEST_CASE("Test bank account bank balance static varible")
 	BankAccount account3(2000);
 
 	REQUIRE(account1.get_bank_balance() == 8450);
+}
+
+TEST_CASE("Test checking account w no constructor")
+{
+	CheckingAccount account;
+	REQUIRE(account.get_balance() == 5);
 
 }
+
+TEST_CASE("Test checking account with constructor")
+{
+	CheckingAccount account(900);
+	REQUIRE(account.get_balance() == 905);
+
+}
+
+TEST_CASE("Test class checking account function overriding")
+{
+	CheckingAccount account(900);
+	REQUIRE(account.get_balance() == 905);
+
+}
+
+TEST_CASE("Test savings account w no constructor")
+{
+	SavingsAccount account;
+	REQUIRE(account.get_balance() == 0);
+
+}
+
+TEST_CASE("Test savings account with constructor")
+{
+	SavingsAccount account(100);
+	REQUIRE(account.get_balance() == 100);
+
+}
+

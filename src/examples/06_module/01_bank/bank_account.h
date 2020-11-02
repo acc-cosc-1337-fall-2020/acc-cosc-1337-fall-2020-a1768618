@@ -39,9 +39,10 @@ public:
     friend BankAccount operator+(const BankAccount& a1, const BankAccount& a2);
 
 protected: // classes that have inherited the back account have access to this data
-    int balance{0}; //class member
+    
     
 private: //access specifier
+    int balance{0}; //class member
     static int bank_balance;  // Persists thoughout the lifetime of program
     
 

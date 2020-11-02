@@ -5,9 +5,12 @@
 #define CHECKING_ACCOUNT_H
 
 class CheckingAccount : public BankAccount
-{
+{    
 public:
-    CheckingAccount(int b) : BankAccount(b){}
-    int get_balance()const{return balance + 5;} // overrride base class function
+    CheckingAccount(){};
+    CheckingAccount(int b) : BankAccount(b){};
+
+    // Accessing a COPY of balance, and OVERRIDING the get_balance from BankAccount
+    int get_balance()const{return BankAccount::get_balance() + 5;} 
 };
 #endif
