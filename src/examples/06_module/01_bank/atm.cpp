@@ -14,7 +14,7 @@ ATM::ATM()
 
 void ATM::scan_card()
 {
-    bank_account_index = rand() % 4;
+    bank_account_index = rand() %  accounts.size()-1;
 }
 
 void ATM::display_balance()const

@@ -2,24 +2,60 @@
 #include "bank_account.h"
 #include "checking_account.h"
 #include <iostream>
+#include <memory>
 #include <stdlib.h>
 #include <time.h>
 
 using std::cout;
 using std::cin;
+using std::unique_ptr;
 
-enum transaction{DEPOSIT = 1, WITHDRAW = 2, DISPLAY = 3};//legacy C++
-enum class BANK_OPTIONS{DEPOSIT = 1, WITHDRAW = 2, DISPLAY = 3};
+enum transaction{DEPOSIT = 1, WITHDRAW = 2, DISPLAY = 3}; //legacy C++
+enum class BANK_OPTIONS{DEPOSIT = 1, WITHDRAW = 2, DISPLAY = 3}; // C++ 11
 
 int main()
 {
-	CheckingAccount ca(1000);
-	cout<<ca.get_balance()<<"\n";
-	/*srand(time(NULL));//generate a random number every time our program  runs
-	//BankAccount account(100), account1(500);
-	//BankAccount account2 = account + account1;
-	
+	BankAccount a;
+	cout<<a.get_balance()<<"\n";
+	CheckingAccount c;
+	// Uses the Inherited functions from BankAccount
+	cout<<c.get_balance()<<"\n";
 
+	a = c;
+	cout<<a.get_balance()<<"\n";
+
+	std::unique_ptr<BankAccount> up_a(new BankAccount());
+	cout<<up_a->get_balance()<<"\n";
+	std::unique_ptr<CheckingAccount> up_c = std::make_unique<CheckingAccount>(500);
+	cout<<up_c->get_balance()<<"\n";
+
+	//up_a = std::move(up_c);
+	//cout<<up_a->get_balance()<<"\n\n";
+
+	vector<unique_ptr<BankAccount>> accounts; // list
+	accounts.push_back(std::move(up_a));
+	accounts.push_back(std::move(up_c));
+
+
+	cout<<"Display vector: \n";
+	for(auto& account: accounts)
+	{
+		
+	}
+
+	/*CheckingAccount ca(1000);
+	cout<<ca.get_balance()<<"\n";
+	srand(time(NULL));//generate a random number every time our program  runs
+	
+	// OVERLOADED OPERATORS
+	//BankAccount account(100), account1(500);
+	//BankAccount account2 = account + account1;*/
+	//cout<<account2; //this is calling the friend overload << function 
+	//cin>>account;
+	//cout<<account;
+	//cout<<"balance "<<account.get_balance()<<"\n\n";
+
+	/*
 	int choice;
 	char cont;
 	ATM atm;
@@ -48,7 +84,6 @@ int main()
 		cin>>cont;
 	} while (toupper(cont) == 'Y');*/
 	
-	
 
 	/*BranchBank bank(100000);
 	bank.update_balance(500);
@@ -61,17 +96,14 @@ int main()
 	cout<<"Bank balance: "<<checking_account.get_bank_balance()<<"\n";
 	display_balance(checking_account);*/
 
-	
-	
-	/*cout<<"Balance: "<<checking_account.get_balance()<<"\n\n";	// Displays the returned balance in BankAccount
+	/*cout<<"Balance: "<<checking_account.get_balance()<<"\n\n";	
+	cout<<"Bank balance: "<<checking_account.get_bank_balance()<<"\n\n";	
 
-	cout<<"Bank balance: "<<checking_account.get_bank_balance()<<"\n\n";	// Disaplay the sataic integer holding $100 from checking_account
-
-	BankAccount new_account;	// Creates a new instance of BankAccount
-	cout<<"Balance: "<<new_account.get_balance()<<"\n";		// Display what is in the default constuctor which is 0.
-	display_bank_account_data(new_account);		// Free function is called to deposit 50 into the new_account balance in BankAccount
-	cout<<"Balance: "<<new_account.get_balance()<<"\n";		// Returns the new_account balance in BackAccount class after $50 deposit
-	cout<<"Bank balance: "<<new_account.get_bank_balance()<<"\n\n";		// Displays the static integer holding $150 becouse $50 was added to the prevoius $100
+	BankAccount new_account;	
+	cout<<"Balance: "<<new_account.get_balance()<<"\n";		
+	display_bank_account_data(new_account);		
+	cout<<"Balance: "<<new_account.get_balance()<<"\n";		
+	cout<<"Bank balance: "<<new_account.get_bank_balance()<<"\n\n";	
 
 	BankAccount account = get_account();
 	cout<<"Account balance: "<<account.get_balance()<<"\n\n";

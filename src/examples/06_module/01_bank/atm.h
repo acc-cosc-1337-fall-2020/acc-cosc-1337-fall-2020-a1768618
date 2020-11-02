@@ -16,7 +16,6 @@ public:
     void scan_card();
     void display_balance()const;
     
-
 private:
     int get_balance_from_db();
     std::vector<BankAccount> accounts;
