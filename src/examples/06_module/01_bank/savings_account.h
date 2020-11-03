@@ -8,6 +8,6 @@ class SavingsAccount : public BankAccount
 {
 public:
     SavingsAccount(){};
-    SavingsAccount(int b) : BankAccount(b){}
+    SavingsAccount(int b) : BankAccount(b){};
 };
 #endif

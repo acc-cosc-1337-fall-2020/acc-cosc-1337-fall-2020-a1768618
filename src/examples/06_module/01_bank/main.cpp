@@ -5,48 +5,58 @@
 #include <memory>
 #include <stdlib.h>
 #include <time.h>
+#include <utility>
+#include <vector>
 
 using std::cout;
 using std::cin;
+using std::vector;
 using std::unique_ptr;
+using std::make_unique;
 
 enum transaction{DEPOSIT = 1, WITHDRAW = 2, DISPLAY = 3}; //legacy C++
 enum class BANK_OPTIONS{DEPOSIT = 1, WITHDRAW = 2, DISPLAY = 3}; // C++ 11
 
 int main()
 {
-	BankAccount a;
-	cout<<a.get_balance()<<"\n";
+	/*DIFFERENCES BETWEEN SLICING AND NOT SLICING
+	// Uses the defuallt constructor whaich initialized balance to 0
+	BankAccount ba;	
+	cout<<ba.get_balance()<<"\n";
+
+
 	CheckingAccount c;
-	// Uses the Inherited functions from BankAccount
 	cout<<c.get_balance()<<"\n";
 
-	a = c;
-	cout<<a.get_balance()<<"\n";
+	ba = c;
+	cout<<ba.get_balance()<<"\n\n";
 
-	std::unique_ptr<BankAccount> up_a(new BankAccount());
-	cout<<up_a->get_balance()<<"\n";
-	std::unique_ptr<CheckingAccount> up_c = std::make_unique<CheckingAccount>(500);
-	cout<<up_c->get_balance()<<"\n";
+	// You first instantiate the unique pointer
+	unique_ptr<BankAccount> up_ba = make_unique<BankAccount>();
+	cout<<up_ba->get_balance()<<"\n";
+	unique_ptr<CheckingAccount> up_c = make_unique<CheckingAccount>();
+	cout<<up_c->get_balance()<<"\n\n";
 
-	//up_a = std::move(up_c);
-	//cout<<up_a->get_balance()<<"\n\n";
+	//up_ba = std::move(up_c);
+	//cout<<up_ba->get_balance()<<"\n\n";
 
-	vector<unique_ptr<BankAccount>> accounts; // list
-	accounts.push_back(std::move(up_a));
-	accounts.push_back(std::move(up_c));
+	// Creates an empty vector
+	std::vector<unique_ptr<BankAccount>> accounts;
+	// push_back adds the item to the END of the list
+	accounts.push_back(move(up_ba));
+	accounts.push_back(move(up_c));
 
+	cout<<accounts[0]->get_balance()<<"\n";
 
-	cout<<"Display vector: \n";
-	for(auto& account: accounts)
+	for(auto & account: accounts)
 	{
-		
-	}
+		cout<<account->get_balance()<<"\n";
+	}*/
 
-	/*CheckingAccount ca(1000);
-	cout<<ca.get_balance()<<"\n";
-	srand(time(NULL));//generate a random number every time our program  runs
+	//CheckingAccount ca(1000);
+	//cout<<ca.get_balance()<<"\n";
 	
+
 	// OVERLOADED OPERATORS
 	//BankAccount account(100), account1(500);
 	//BankAccount account2 = account + account1;*/
@@ -55,7 +65,8 @@ int main()
 	//cout<<account;
 	//cout<<"balance "<<account.get_balance()<<"\n\n";
 
-	/*
+	srand(time(NULL));//generate a random number every time our program  runs
+	
 	int choice;
 	char cont;
 	ATM atm;
@@ -82,7 +93,7 @@ int main()
 		}
 		cout<<"Enter y to continue: ";
 		cin>>cont;
-	} while (toupper(cont) == 'Y');*/
+	} while (toupper(cont) == 'Y');
 	
 
 	/*BranchBank bank(100000);
