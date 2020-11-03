@@ -27,41 +27,10 @@ int main()
 		game.start_game(player);
 		cout<<"\n";
 
-		// Display the starting board
-		game.display_board();
-
-		// Mark the board
-		int position;
+		
 		do
 		{
-			cout<<"Please enter a position on the board. (1-9)\n";
-			cout<<"1 being top left and 9 being bottom right: \n";
-			//cin>>position;
-
-			// Validate if position is a number
-			while (!(cin>>position))
-			{
-				// Explain the error
-				cout<<"ERROR: Please enter a number (1-9): ";
-
-				// Clear previous input
-				cin.clear();
-
-				// Discard previous input
-				cin.ignore(123, '\n');
-			}
 			
-			// Validate if position is less then or equal to 0
-			while (position <= 0 || position > 9)
-			{
-				cout<<"ERROR: Your position must be between 1 and 9.\n";
-				cout<<"Please enter your position again: ";
-				cin>>position;
-			}
-			
-			// Call the mark_board tic tac toe class member function
-			game.mark_board(position);
-			game.display_board();
 			if (game.game_over() == true)
 			{
 				// Display who the winner is
