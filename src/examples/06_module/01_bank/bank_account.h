@@ -28,7 +28,7 @@ class BankAccount
 public:
     BankAccount() = default;//behave like the default constructor C++ creates
     explicit BankAccount(int b); // prevents user from saying BankAccount b = 1000
-    int get_balance()const{return balance;}//inline function-const makes a function read only
+    virtual int get_balance()const{return balance;}//inline function-const makes a function read only
     void deposit(int amount);
     void withdraw(int amount);
     friend void display_balance(const BankAccount& a);//NOT A CLASS FUNCTION-it is a free function
