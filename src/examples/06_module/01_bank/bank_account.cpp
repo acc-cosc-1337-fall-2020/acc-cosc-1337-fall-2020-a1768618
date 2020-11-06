@@ -8,6 +8,11 @@ BankAccount::BankAccount(int b) : balance(b)
     bank_balance += balance;  
 }
 
+int BankAccount::get_balance() const
+{
+    return balance;
+}
+
 void BankAccount::deposit(int amount)
 {
     if(amount > 0)
@@ -52,12 +57,12 @@ std::istream& operator>>(std::istream& in, BankAccount& a)
     return in;
 }
 
-BankAccount operator+(const BankAccount& a1, const BankAccount& a2)
+/*BankAccount operator+(const BankAccount& a1, const BankAccount& a2)
 {
     BankAccount account(a1.balance + a2.balance);
 
     return account;
-}
+}*/
 
 
 // FREE FUNCTIONS DO NOT BELONG TO THE BANK ACCOUNT CLASS   
@@ -67,13 +72,13 @@ void display_bank_account_data(BankAccount& b)
     std::cout<<"Balance: "<<b.get_balance()<<"\n";    
 }
 
-BankAccount get_account()
+/*BankAccount get_account()
 {
     //Class that retrieves DB balance and creates BankAccount
     BankAccount a(1000);
 
     return a;
-}
+}*/
 
 void BranchBank::update_balance(int b)
 {

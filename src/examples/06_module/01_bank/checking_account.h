@@ -11,6 +11,6 @@ public:
     CheckingAccount(int b) : BankAccount(b){};
 
     // Accessing a COPY of balance, and OVERRIDING the get_balance from BankAccount
-    int get_balance()const override{return BankAccount::get_balance() + 5;} 
+    int get_balance()const override{return balance + 5;}//override base class function
 };
 #endif

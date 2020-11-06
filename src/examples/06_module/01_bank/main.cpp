@@ -19,42 +19,9 @@ enum class BANK_OPTIONS{DEPOSIT = 1, WITHDRAW = 2, DISPLAY = 3}; // C++ 11
 
 int main()
 {
-	BankAccount* a = new CheckingAccount();
-	unique_ptr<BankAccount> up_ba = make_unique<CheckingAccount>();
-
-
-	unique_ptr<BankAccount> c = make_unique<CheckingAccount>(100);
-	cout<<c->get_balance()<<"\n";
-	srand(time(NULL));//generate a random number every time our program  runs
-	
-	int choice;
-	char cont;
-	ATM atm;
-	do
-	{
-		atm.scan_card();
-
-		cout<<"Enter 1, 2, or 3\n";
-		cin>>choice;
-
-		switch (static_cast<BANK_OPTIONS>(choice))
-		{
-		case BANK_OPTIONS::DEPOSIT:
-			cout<<"You selected deposit\n";
-			break;
-		case BANK_OPTIONS::WITHDRAW:
-			cout<<"You selected withdraw\n";
-			break;
-		case BANK_OPTIONS::DISPLAY:
-			atm.display_balance();
-			break;
-		default:
-			cout<<"Invalid choice\n";
-		}
-		cout<<"Enter y to continue: ";
-		cin>>cont;
-	} while (toupper(cont) == 'Y');
-
+//	up_a = std::move(up_c);
+//	cout<<up_a->get_balance()<<"\n\n";
+		
 	/*DIFFERENCES BETWEEN SLICING AND NOT SLICING
 	// Uses the defuallt constructor whaich initialized balance to 0
 	BankAccount ba;	
@@ -91,7 +58,45 @@ int main()
 
 	//CheckingAccount ca(1000);
 	//cout<<ca.get_balance()<<"\n";
+
+	/*SavingsAccount sa(500);
+	cout<<sa.get_balance()<<"\n";
 	
+	BankAccount account(100), account1(500);
+	//BankAccount account2 = account + account1;
+	cout<<account;
+	cin>>account;
+	cout<<"balance is "<<account;*/
+
+	srand(time(NULL));//generate a random number every time our program  runs
+	
+	int choice;
+	char cont;
+	ATM atm;
+	do
+	{
+		atm.scan_card();
+
+		cout<<"Enter 1, 2, or 3\n";
+		cin>>choice;
+
+		switch (static_cast<BANK_OPTIONS>(choice))
+		{
+		case BANK_OPTIONS::DEPOSIT:
+			cout<<"You selected deposit\n";
+			break;
+		case BANK_OPTIONS::WITHDRAW:
+			cout<<"You selected withdraw\n";
+			break;
+		case BANK_OPTIONS::DISPLAY:
+			atm.display_balance();
+			break;
+		default:
+			cout<<"Invalid choice\n";
+		}
+		cout<<"Enter y to continue: ";
+		cin>>cont;
+	} while (toupper(cont) == 'Y');
 
 	// OVERLOADED OPERATORS
 	//BankAccount account(100), account1(500);

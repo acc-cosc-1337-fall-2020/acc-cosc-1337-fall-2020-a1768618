@@ -3,121 +3,95 @@
 #include "bank_account.h"
 #include "checking_account.h"
 #include "savings_account.h"
+#include<memory>
 
+using std::unique_ptr; using std::make_unique;
 
 TEST_CASE("Verify Test Configuration", "verification") {
 	REQUIRE(true == true);
 }
 
-TEST_CASE("Test Bank account initial blanace")
+TEST_CASE("Test Bank account initial balance")
 {
-	BankAccount account(100);
+	unique_ptr<BankAccount> account(new CheckingAccount(100));
 
-	REQUIRE(account.get_balance() == 100);
+	REQUIRE(account->get_balance() == 105);
 }
 
 TEST_CASE("Test bank account deposit")
 {
-	BankAccount account(500);
-	REQUIRE(account.get_balance() == 500);
+	unique_ptr<BankAccount> account = make_unique<CheckingAccount>(500);
+	REQUIRE(account->get_balance() == 505);
 
-	account.deposit(100);
+	account->deposit(100);
 
-	REQUIRE(account.get_balance() == 600);
+	REQUIRE(account->get_balance() == 605);
 
 }
 
 TEST_CASE("Test bank account deposit with negative amount")
 {
-	BankAccount account(500);
-	REQUIRE(account.get_balance() == 500);
 
-	account.deposit(-100);
+	unique_ptr<BankAccount> account = make_unique<CheckingAccount>(500);
+	REQUIRE(account->get_balance() == 505);
 
-	REQUIRE(account.get_balance() == 500);
+	account->deposit(-100);
+
+	REQUIRE(account->get_balance() == 505);
 
 }
 
+
 TEST_CASE("Test bank account withdraw")
 {
-	BankAccount account(500);
-	REQUIRE(account.get_balance() == 500);
 
-	account.deposit(100);
-	REQUIRE(account.get_balance() == 600);
+	unique_ptr<BankAccount> account = make_unique<SavingsAccount>(500);
+	REQUIRE(account->get_balance() == 501);
 
-	account.withdraw(50);
-	REQUIRE(account.get_balance() == 550);
+	account->deposit(100);
+	REQUIRE(account->get_balance() == 601);
+
+	account->withdraw(50);
+	REQUIRE(account->get_balance() == 551);
 }
 
 TEST_CASE("Test bank account withdraw with negative amount")
 {
-	BankAccount account(500);
-	REQUIRE(account.get_balance() == 500);
+	unique_ptr<BankAccount> account = make_unique<SavingsAccount>(500);
+	REQUIRE(account->get_balance() == 501);
 
-	account.deposit(100);
-	REQUIRE(account.get_balance() == 600);
+	account->deposit(100);
+	REQUIRE(account->get_balance() == 601);
 
-	account.withdraw(-50);
-	REQUIRE(account.get_balance() == 600);
+	account->withdraw(-50);
+	REQUIRE(account->get_balance() == 601);
 }
 
 TEST_CASE("Test Bank account with default constructor")
 {
-	BankAccount account;
 
-	REQUIRE(account.get_balance() == 0);
+	unique_ptr<BankAccount> account = make_unique<CheckingAccount>();
+
+	REQUIRE(account->get_balance() == 5);
 }
 
 TEST_CASE("Test bank account deposit with default constructor")
 {
-	BankAccount account;
-	REQUIRE(account.get_balance() == 0);
-	account.deposit(100);
-	REQUIRE(account.get_balance() == 100);
-}
+	unique_ptr<BankAccount> account = make_unique<SavingsAccount>();
+	REQUIRE(account->get_balance() == 1);
 
-TEST_CASE("Test bank account bank balance static varible")
-{
-	BankAccount account1(1000);
-	BankAccount account2(3000);
-	BankAccount account3(2000);
+	account->deposit(100);
 
-	REQUIRE(account1.get_bank_balance() == 8450);
-}
-
-TEST_CASE("Test checking account w no constructor")
-{
-	CheckingAccount account;
-	REQUIRE(account.get_balance() == 5);
+	REQUIRE(account->get_balance() == 101);
 
 }
 
-TEST_CASE("Test checking account with constructor")
+TEST_CASE("Test bank account bank balance static variable")
 {
-	CheckingAccount account(900);
-	REQUIRE(account.get_balance() == 905);
+	unique_ptr<BankAccount> account1 = make_unique<CheckingAccount>(1000);
+	unique_ptr<BankAccount> account2 = make_unique<SavingsAccount>(3000);
+	unique_ptr<BankAccount> account3 = make_unique<CheckingAccount>(2000);
 
-}
-
-TEST_CASE("Test class checking account function overriding")
-{
-	CheckingAccount account(900);
-	REQUIRE(account.get_balance() == 905);
-
-}
-
-TEST_CASE("Test savings account w no constructor")
-{
-	SavingsAccount account;
-	REQUIRE(account.get_balance() == 0);
-
-}
-
-TEST_CASE("Test savings account with constructor")
-{
-	SavingsAccount account(100);
-	REQUIRE(account.get_balance() == 100);
-
+	REQUIRE(account1->get_bank_balance() == 8450);
 }
 
