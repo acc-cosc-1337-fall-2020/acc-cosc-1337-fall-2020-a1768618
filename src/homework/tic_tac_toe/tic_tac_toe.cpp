@@ -24,16 +24,6 @@ void TicTacToe::set_next_player()
     }  
 }
 
-// Fourth you show the board
-void TicTacToe::display_board() const
-{
-    for(std::size_t i = 0; (i < pegs.size()); i+=3)
-    {
-        cout<< pegs[i]<<"|"<<pegs[i+1]<<"|"<<pegs[i+2]<<"\n";
-    }
-   
-}
-
 // Fifth you mark your position and take turns
 void TicTacToe::mark_board(int position)
 {
@@ -42,17 +32,18 @@ void TicTacToe::mark_board(int position)
         if(pegs[position - 1] == " ")
         {
             pegs[position - 1] = player;
-            set_next_player();
+            if (game_over() ==  false)
+            {
+                set_next_player();
+            }
+            
         }
         else
         {
             cout<<"Position already played\n";
         }
     } while (pegs[position - 1] == " ");
-    
-    
-    
-    
+        
 }
 
 
@@ -130,15 +121,15 @@ bool TicTacToe::check_diagonal_win()
 }
     
 // Set who the winner is
-void TicTacToe::set_winner()
+void const TicTacToe::set_winner()
 {
     if(player == "x")
     {
-        winner = "o";
+        winner = "x";
     }
     else
     {
-        winner = "x";
+        winner = "o";
     }
 }
 
@@ -178,4 +169,53 @@ bool TicTacToe::game_over()
         return true;
     }
     return false;
+}
+
+std::istream& operator>>(std::istream& in, TicTacToe& game)
+{
+    // Mark the board
+	int position;
+    cout<<"Please enter a position on the board. (1-9)\n";
+	cout<<"1 being top left and 9 being bottom right: \n";
+	//cin>>position;
+
+	// Validate if position is a number
+	while (!(in>>position))
+	{
+		// Explain the error
+		cout<<"ERROR: Please enter a number (1-9): ";
+
+		// Clear previous input
+		in.clear();
+
+		// Discard previous input
+		in.ignore(123, '\n');
+	}
+			
+	// Validate if position is less then or equal to 0
+	while (position <= 0 || position > 9)
+	{
+		cout<<"ERROR: Your position must be between 1 and 9.\n";
+		cout<<"Please enter your position again: ";
+		in>>position;
+	}
+
+    // Call the mark_board tic tac toe class member function
+	game.mark_board(position);
+
+    //Display the board when position is marked.
+    cout<<game;
+
+    return in;
+}
+
+std::ostream& operator<<(std::ostream& out, const TicTacToe& game)
+{
+    // Code that displays the board
+    for(std::size_t i = 0; (i < game.pegs.size()); i+=3)
+    {
+        out<<game.pegs[i]<<"|"<<game.pegs[i+1]<<"|"<<game.pegs[i+2]<<"\n";
+    }
+
+    return out;
 }

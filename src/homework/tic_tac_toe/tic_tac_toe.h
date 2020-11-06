@@ -26,7 +26,7 @@ private:
     bool check_column_win();
     bool check_row_win();
     bool check_diagonal_win();
-    void set_winner();
+    void const set_winner();
 
 public:
     // Public Member Functions
@@ -34,9 +34,12 @@ public:
     string get_player() const {return player;}
     void start_game(string);
     void mark_board(int);
-    void display_board() const;
 
-    string get_winner(){return winner;}
+    string get_winner() const {return winner;}
+
+    // Operator Overloads
+    friend std::istream& operator>>(std::istream&, TicTacToe&);
+    friend std::ostream& operator<<(std::ostream&, const TicTacToe&);
 
 };
 
