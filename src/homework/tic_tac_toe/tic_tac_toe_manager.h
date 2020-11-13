@@ -2,15 +2,20 @@
 #include "tic_tac_toe.h"
 #include <vector>
 #include <iostream>
+#include <memory>
+#include <utility>
 #ifndef TIC_TAC_TOE_MANAGER_H
 #define TIC_TAC_TOE_MANAGER_H
 
 using std::vector;
 using std::ostream;
+using std::unique_ptr;
+using std::make_unique;
+
 class TicTacToeManager
 {
 private:
-    vector<TicTacToe> games;
+    vector<unique_ptr<TicTacToe>> games;
 
     // Initializes the initial winner counts
     int o_win = {0};
@@ -20,9 +25,9 @@ private:
     void update_winner_count(string);
 
 public:
-    void save_game(const TicTacToe b);
+    void save_game(unique_ptr<TicTacToe> &b);
     void get_winner_total(int&, int&, int&);
-    friend ostream& operator<<(std::ostream&, const TicTacToeManager&);
+    friend std::ostream& operator<<(std::ostream&, const TicTacToeManager &);
     
     
 };

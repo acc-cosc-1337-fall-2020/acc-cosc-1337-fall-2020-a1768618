@@ -27,21 +27,21 @@ void TicTacToeManager::get_winner_total(int& o, int& x, int& t)
     cout<<"o wins: "<< o << " x wins: " << x << " ties: "<< t <<"\n";
 }
 
-ostream& operator<<(std::ostream& out, const TicTacToeManager& manager)
+ostream& operator<<(std::ostream& out, const TicTacToeManager &manager)
 {
-    
-    for (size_t i = 0; i < manager.games.size(); i++)
+    for (auto &b: manager.games)
     {
-        out<<manager.games[i];
-        out<<"Game: "<<i+1<<" Winner is: "<<manager.games[i].get_winner()<<"\n\n";
+        out<<*b;
+        out<<"Winner is: "<<b->get_winner()<<"\n";
+    } 
 
-    }  
 
     return out;
 }
 
-void TicTacToeManager::save_game(const TicTacToe b)
+void TicTacToeManager::save_game(std::unique_ptr<TicTacToe> &b)
 {
-    games.push_back(b);
-    update_winner_count(b.get_winner());
+    update_winner_count(b->get_winner());
+    games.push_back(std::move(b));
+    
 }
