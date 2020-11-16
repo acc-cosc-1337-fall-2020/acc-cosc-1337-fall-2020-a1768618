@@ -76,7 +76,7 @@ bool TicTacToe4::check_diagonal_win()
     {
         return true;
     }
-    else if(pegs[12] == "o" && pegs[9] == "o" && pegs[6] == "o" && pegs[3] == "x")
+    else if(pegs[12] == "o" && pegs[9] == "o" && pegs[6] == "o" && pegs[3] == "o")
     {
         return true;
     }
