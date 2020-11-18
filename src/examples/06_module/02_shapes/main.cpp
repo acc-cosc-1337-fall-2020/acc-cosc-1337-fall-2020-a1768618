@@ -14,6 +14,13 @@ using std::unique_ptr; using std::make_unique;
 
 int main() 
 {
+	Shape* s = nullptr;
+	Circle c;
+	c.draw();
+
+	s = &c;
+	s->draw();
+
 	unique_ptr<Shape> circle = make_unique<Circle>();
 	circle->draw();
 

@@ -28,7 +28,11 @@ class BankAccount
 public:
     BankAccount() = default;//behave like the default constructor C++ creates
     explicit BankAccount(int b); // prevents user from saying BankAccount b = 1000
-    virtual int get_balance()const = 0;//inline function-const makes a function read only
+
+    //The virtual keyword allows derived classes to behave like the base class
+    //If the virtul function is '= 0' the function is purely virtual. Making the class an abstract class.
+    //The user will not be able to create an instance of an Abstact class.
+    virtual int get_balance()const = 0; 
     virtual void deposit(int amount) final;
     virtual void withdraw(int amount) final;
     friend void display_balance(const BankAccount& a);//NOT A CLASS FUNCTION-it is a free function

@@ -24,29 +24,29 @@ int main()
 		
 	/*DIFFERENCES BETWEEN SLICING AND NOT SLICING
 	// Uses the defuallt constructor whaich initialized balance to 0
-	BankAccount ba;	
+	BankAccount a;	
 	cout<<ba.get_balance()<<"\n";
 
 
 	CheckingAccount c;
 	cout<<c.get_balance()<<"\n";
 
-	ba = c;
+	a = c;
 	cout<<ba.get_balance()<<"\n\n";
 
 	// You first instantiate the unique pointer
-	unique_ptr<BankAccount> up_ba = make_unique<BankAccount>();
-	cout<<up_ba->get_balance()<<"\n";
+	unique_ptr<BankAccount> up_a = make_unique<BankAccount>();
+	cout<<up_a->get_balance()<<"\n";
 	unique_ptr<CheckingAccount> up_c = make_unique<CheckingAccount>();
 	cout<<up_c->get_balance()<<"\n\n";
 
-	//up_ba = std::move(up_c);
-	//cout<<up_ba->get_balance()<<"\n\n";
+	//up_a = std::move(up_c);
+	//cout<<up_a->get_balance()<<"\n\n";
 
 	// Creates an empty vector
 	std::vector<unique_ptr<BankAccount>> accounts;
 	// push_back adds the item to the END of the list
-	accounts.push_back(move(up_ba));
+	accounts.push_back(move(up_a));
 	accounts.push_back(move(up_c));
 
 	cout<<accounts[0]->get_balance()<<"\n";
