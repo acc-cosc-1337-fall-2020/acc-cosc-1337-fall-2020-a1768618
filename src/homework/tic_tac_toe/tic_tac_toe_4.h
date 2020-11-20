@@ -12,6 +12,7 @@ private:
     
 public:
     TicTacToe4() : TicTacToe(4){}
+    TicTacToe4(std::vector<string> p, string winner) : TicTacToe(p, winner){}
 
 };
 

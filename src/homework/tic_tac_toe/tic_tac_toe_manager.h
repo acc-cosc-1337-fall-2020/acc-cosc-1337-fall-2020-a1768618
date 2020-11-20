@@ -1,9 +1,11 @@
 //h
 #include "tic_tac_toe.h"
+#include "tic_tac_toe_data.h"
 #include <vector>
 #include <iostream>
 #include <memory>
 #include <utility>
+#include <string>
 #ifndef TIC_TAC_TOE_MANAGER_H
 #define TIC_TAC_TOE_MANAGER_H
 
@@ -23,11 +25,15 @@ private:
     int tie = {0};
 
     void update_winner_count(string);
+    TicTacToeData data;
 
 public:
+    TicTacToeManager() = default;
+    TicTacToeManager(TicTacToeData &data);
+    ~TicTacToeManager();
     void save_game(unique_ptr<TicTacToe> &b);
-    void get_winner_total(int&, int&, int&);
-    friend std::ostream& operator<<(std::ostream&, const TicTacToeManager &);
+    void get_winner_total(int &o, int &x, int &t);
+    friend std::ostream& operator<<(std::ostream&, const TicTacToeManager &manager);
     
     
 };

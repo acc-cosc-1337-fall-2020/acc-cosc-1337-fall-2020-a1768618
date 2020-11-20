@@ -83,7 +83,7 @@ bool TicTacToe::check_diagonal_win()
 }
     
 // Set who the winner is
-void const TicTacToe::set_winner()
+void TicTacToe::set_winner()
 {
     if(player == "x")
     {
