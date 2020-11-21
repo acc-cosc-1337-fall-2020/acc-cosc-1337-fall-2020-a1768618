@@ -63,21 +63,21 @@ bool TicTacToe::check_board_full() const
 }
 
 // Check if you won via a columm
-bool TicTacToe::check_column_win()
+bool TicTacToe::check_column_win()const
 {
    
     return false;
 }
 
 // Check if you won via a row
-bool TicTacToe::check_row_win()
+bool TicTacToe::check_row_win()const
 {
     return false;
 }
 
 
 // Check if you won via a diagonal
-bool TicTacToe::check_diagonal_win()
+bool TicTacToe::check_diagonal_win()const
 {
     return false;
 }

@@ -34,9 +34,9 @@ protected:
     vector<string> pegs{};
 
     // Protected virtual member functions
-    virtual bool check_column_win();
-    virtual bool check_row_win();
-    virtual bool check_diagonal_win();
+    virtual bool check_column_win()const = 0;
+    virtual bool check_row_win()const = 0;
+    virtual bool check_diagonal_win()const = 0;
 
 private:
     // Private Member Varibles

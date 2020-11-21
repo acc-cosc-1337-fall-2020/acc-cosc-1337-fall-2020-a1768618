@@ -10,7 +10,7 @@ Win by column if and return true if (each column index)
 else
 false
 */
-bool TicTacToe4::check_column_win()
+bool TicTacToe4::check_column_win()const
 {
     // Here the vector has 16 elements
     for (std::size_t i = 0; i < 4; ++i)
@@ -37,7 +37,7 @@ Win by row if
 8, 9, 10, 11 are equal 
 12,13,14, 15 are equal
 */
-bool TicTacToe4::check_row_win()
+bool TicTacToe4::check_row_win()const
 { // Still needs to be modified to be 4X4
     for (std::size_t i = 0; i < pegs.size(); i+=4)
     {
@@ -62,7 +62,7 @@ Win diagonally
 8, 9, 10, 11
 12,13,14, 15
 */
-bool TicTacToe4::check_diagonal_win()
+bool TicTacToe4::check_diagonal_win()const
 {
     if (pegs[0] == "x" && pegs[5] == "x" && pegs[10] == "x" && pegs[15] == "x")
     {

@@ -9,7 +9,7 @@ Win by column if and return true if
 else
 false
 */
-bool TicTacToe3::check_column_win()
+bool TicTacToe3::check_column_win()const
 {
     for (std::size_t i = 0; i < 3; i++)
     {
@@ -33,7 +33,7 @@ Win by row if
 3,4,5 are equal
 6,7,8 are equal
 */
-bool TicTacToe3::check_row_win()
+bool TicTacToe3::check_row_win()const
 {
     for (std::size_t i = 0; i < pegs.size(); i+=3)
     {
@@ -57,7 +57,7 @@ Win diagonally
 3 4 5
 6 7 8
 */
-bool TicTacToe3::check_diagonal_win()
+bool TicTacToe3::check_diagonal_win()const
 {
     if (pegs[0] == "x" && pegs[4] == "x" && pegs[8] == "x")
     {

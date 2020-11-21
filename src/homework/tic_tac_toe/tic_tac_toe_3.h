@@ -6,9 +6,9 @@
 class TicTacToe3 : public TicTacToe
 {
 private:
-    bool check_column_win();
-    bool check_row_win();
-    bool check_diagonal_win();
+    bool check_column_win()const override;
+    bool check_row_win()const override;
+    bool check_diagonal_win() const override;
 
 public:
     TicTacToe3() : TicTacToe(3){}

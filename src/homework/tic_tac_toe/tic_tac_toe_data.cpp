@@ -41,7 +41,7 @@ std::vector<std::unique_ptr<TicTacToe>> TicTacToeData::get_games()
             pegs.push_back(str1);
         }
 
-        string winner = pegs[pegs.size()-1];
+        string winner = pegs.back();
         pegs.resize(pegs.size()-1);
         unique_ptr<TicTacToe> board;
 

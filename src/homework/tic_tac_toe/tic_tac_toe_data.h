@@ -17,7 +17,7 @@ public:
     vector<unique_ptr<TicTacToe>> get_games();
 
 private:
-    const string file_name{"tic_tac_toe_data.dat"};
+    string const file_name{"tic_tac_toe_data.dat"};
 };
 
 #endif
