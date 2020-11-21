@@ -2,18 +2,8 @@
 #include<iostream>
 
 //
-void use_smart_pointer(std::unique_ptr<int>& num)
+void ref_param(int& n1, int* n2)
 {
-    std::cout<<"Use Smart pointer function: "<<*num<<"\n";
-}
-
-
-
-std::unique_ptr<int> get_smart_pointer()
-{
-    // We can create dynamic memory in the function 
-    std::unique_ptr<int> num = std::make_unique<int>(500);
-    
-    // and then return it as a return value.
-    return num;
+    n1 = 100;
+    *n2 = 200;
 }
