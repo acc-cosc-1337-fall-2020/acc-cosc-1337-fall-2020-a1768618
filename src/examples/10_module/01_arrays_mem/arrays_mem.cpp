@@ -2,106 +2,94 @@
 #include "arrays_mem.h"
 
 using std::cout; using std::cin;
+using std::string;
 
 void stack_array()
 {
+    // Declare
     const int SIZE = 5;
-    int numbers[SIZE]; //declare the array (list)
-
-    for(int i=0; i < SIZE; ++i)//initialize
+    int numbers[SIZE]; // declare the array(list) (legacy C++)
+    
+    // Initialize
+    for(int i = 0; i<SIZE; ++i)
     {
-       numbers[i] = i + 1;
+        numbers[i] = 0; // initializes all values to 0 (legacy C++)
     }
 
-    for(int i=0; i < SIZE; ++i)//iterate the array(list)
+    // Use
+    // Iterating though the array
+    for(int i = 0; i<SIZE; ++i)
     {
         cout<<numbers[i]<<"\n";
     }
-
-    cout<<"\nValue at index 0 "<<numbers[0]<<"\n";
-    numbers[0] = 10;
-    cout<<"\nValue at index 0 "<<numbers[0]<<"\n";
-
 }
 
 void stack_array_cin()
 {
+    // Declare
     const int SIZE = 3;
-    int numbers[SIZE]; //declare the array (list)
-
-    for(int i=0; i < SIZE; ++i)//initialize
+    int numbers[SIZE]; // declare the array(list) (legacy C++)
+    
+    // Initialize
+    for(int i = 0; i<SIZE; ++i)
     {
-        cout<<"Enter a number: ";
-        cin>>numbers[i];
+        cout<<"Enter number: ";
+        cin>>numbers[i]; // initializes all values to 0 (legacy C++)
     }
 
-    for(int i=0; i < SIZE; ++i)//iterate the array(list)
+    // Use
+    // Iterating though the array
+    for(int i = 0; i<SIZE; ++i)
     {
         cout<<numbers[i]<<"\n";
     }
 
-    cout<<"\nValue at index 0 "<<numbers[0]<<"\n";
-    numbers[0] = 10;
-    cout<<"\nValue at index 0 "<<numbers[0]<<"\n";
+    cout<<"-1"<<numbers[-1]<<"\n";
+    cout<<"3"<<numbers[3]<<"\n";
 
 }
 
-void stack_array_strings()
+void array_months()
 {
-    const int SIZE = 3;
-    std::string names[SIZE]{"Jon", "Joe", "May"};
+    const int NUM_OF_MONTHS = 3;
+    int months[NUM_OF_MONTHS] {1, 2, 3};
+    string month_names[NUM_OF_MONTHS] {"Jan", "Feb", "Mar"};
 
-    for(int i=0; i < SIZE; ++i)
+    for(int i=0; i<NUM_OF_MONTHS; ++i)
     {
-        cout<<names[i]<<"\n";
-    }
-
-    names[2] = "Martha";
-
-    for(int i=0; i < SIZE; ++i)
-    {
-        cout<<names[i]<<"\n";
-    }
-
-}
-
-void month_and_days()
-{
-    const int SIZE = 3;
-    std::string months[SIZE]{"Jan", "Feb", "Mar"};
-    int month_days[SIZE] {31, 28, 31};
-
-    for(int i=0; i < SIZE; ++i)
-    {
-        cout<<"Month: "<<months[i]<<" has "<<month_days[i]<<"\n";
-    }
-}
-
-void array_partial_initialization()
-{
-    const int SIZE = 5;
-    int numbers[SIZE]{4, 3, 10};
-
-    for(int i=0; i < SIZE; ++i)
-    {
-        cout<<numbers[i]<<"\n";
+        cout<<months[i]<<" is "<<month_names[i]<<"\n"; // Parallel arrays (C++ legacy)
     }
 
 }
 
 void array_for_ranged()
 {
-    const int SIZE = 5;
-    int numbers[SIZE]{4, 3, 10};    
+    const int SIZE = 3;
+    int numbers[SIZE]{}; // declare and initialize the array(list)
 
     for(auto& number: numbers)
     {
+        number = 1;
         cout<<number<<"\n";
-        number = 0;
     }
     cout<<"\n\n";
     for(auto number: numbers)
     {
         cout<<number<<"\n";
     }
-} 
+}
+
+void array_compare()
+{
+    const int SIZE = 3;
+    int numbers[SIZE]{}; // declare and initialize the array(list)
+    int numbers1[SIZE]{1,2,3};
+
+    if(int i=0; i<SIZE; ++i)
+    {
+        if(numbers[i] != numbers1[i])
+        {
+            //set to false
+        }
+    }
+}

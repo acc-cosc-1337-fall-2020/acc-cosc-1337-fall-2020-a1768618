@@ -7,10 +7,8 @@ void stack_array();
 
 void stack_array_cin();
 
-void stack_array_strings();
+void array_months();
 
-void month_and_days();
+void array_for_ranged();
 
-void array_partial_initialization();
-
-void array_for_ranged(); 
+void array_compare();
