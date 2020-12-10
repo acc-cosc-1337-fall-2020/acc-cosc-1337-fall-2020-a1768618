@@ -1,17 +1,21 @@
 #include "vector.h"
 
+
 //Default Constructor
-Vector::Vector()
+template<class T>
+Vector<T>::Vector()
 : size{0}, space{size}, elements{nullptr}
 {
     std::cout<<"\nSet size and space to 0, elements points to nullptr\n";
 }
 
+
 //Class Constructor
 //private variable size to incoming parameter sz
 //initialize elements pointer to a dynamic array of size sz
-Vector::Vector(size_t sz)
-: size{sz}, space{sz}, elements{new int[sz]} 
+template<class T>
+Vector<T>::Vector(size_t sz)
+: size{sz}, space{sz}, elements{new T[sz]} 
 {
     std::cout<<"Create and init memory at "<<elements<< "\n";
     for(size_t i=0; i < size; ++i)
@@ -26,8 +30,9 @@ Copy Constructor
 2-initialize memory for v2
 3-copy element values from v1 into v2
 */
-Vector::Vector(const Vector& v)
-: size{v.size}, elements{new int[v.size]}
+template<class T>
+Vector<T>::Vector(const Vector<T>& v)
+: size{v.size}, elements{new T[v.size]}
 {
     std::cout<<"\nCopy Constructor Create and init memory "<<elements<<"\n";
     for(size_t i=0; i<v.size; ++i)
@@ -44,9 +49,10 @@ Copy Assignment
 4-Point elements memory to temporary memory
 5-Return a reference to this vector
 */
-Vector& Vector::operator=(const Vector& v)
+template<class T>
+Vector<T>& Vector<T>::operator=(const Vector<T>& v)
 {
-    int* temp = new int[v.size];
+    T* temp = new T[v.size];
     std::cout<<"\nCopy Assignment from "<<v.elements<<" to "<<elements<<"\n";
 
     for(size_t i = 0; i<v.size; ++i)
@@ -69,7 +75,8 @@ Move Constructor
 3-point v.elements to nullptr
 4-set v.size to 0
 */
-Vector::Vector(Vector && v)
+template<class T>
+Vector<T>::Vector(Vector<T> && v)
 : size{v.size}
 {
     std::cout<<"\nMove Constructor from "<<elements<<" to "<<v.elements<<"\n";
@@ -86,7 +93,8 @@ Move Assignment
 4-Point v.elements to nullptr
 5-set v.size to 0
 */
-Vector& Vector::operator=(Vector && v)
+template<class T>
+Vector<T>& Vector<T>::operator=(Vector<T> && v)
 {
     std::cout<<"\nMove Assignment from "<<elements<<" to "<<v.elements<<"\n";
     delete[] elements;
@@ -107,14 +115,15 @@ Reserve
 5-Set nums to temporary memory array
 6-Set space = new allocation
 */
-void Vector::Reserve(size_t new_allocation)
+template<class T>
+void Vector<T>::Reserve(size_t new_allocation)
 {
     if(new_allocation <= space)
     {
         return;
     }
 
-    int* temp = new int[new_allocation];
+    T* temp = new T[new_allocation];
 
     for(size_t i=0; i < size; ++i)
     {
@@ -133,7 +142,8 @@ Resize
 2-Initialize elements greater than size
 3-Set space to new_allocation
 */
-void Vector::Resize(size_t new_allocation)
+template<class T>
+void Vector<T>::Resize(size_t new_allocation)
 {
     Reserve(new_allocation);
 
@@ -153,7 +163,8 @@ Pushback
 3-add value to element at size position
 4-increment size by 1
 */
-void Vector::Pushback(int value)
+template<class T>
+void Vector<T>::Pushback(T value)
 {
     if(space == 0)
     {
@@ -169,26 +180,32 @@ void Vector::Pushback(int value)
 }
 
 //Destructor
-Vector::~Vector()
+template<class T>
+Vector<T>::~Vector()
 {
     std::cout<<"Release memory from heap from "<<elements<<"\n";
     delete[] elements;
 }
 
+// Only Required because we are using both .h and .cpp
+template class Vector<int>;
+template class Vector<double>;
+template class Vector<char>;
+
 // FREE FUNCTIONS-not part of the class
 void use_stack_vector()
 {
-    Vector v1(3);
+    Vector<int> v1(3);
 }
 
 void use_heap_vector()
 {
-    Vector* v1 = new Vector(3);
+    Vector<int>* v1 = new Vector<int>(3);
     delete v1;
 }
 
-Vector get_vector()
+Vector<int> get_vector()
 {
-    Vector v(3);
+    Vector<int> v(3);
     return v;
 }
